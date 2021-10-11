@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Like.init({
-    userId_1: DataTypes.INTEGER,
-    status_1: DataTypes.BOOLEAN,
-    userId_2: DataTypes.INTEGER,
-    status_2: DataTypes.BOOLEAN
+    authorId: DataTypes.INTEGER,
+    authorStatus: DataTypes.BOOLEAN,
+    targetId: DataTypes.INTEGER,
+    targetStatus: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Like',
