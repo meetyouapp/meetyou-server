@@ -1,66 +1,182 @@
-const { User, sequelize } = require('../models')
-const { decode } = require('../helpers/bcrypt');
-const { sign } = require('../helpers/jwt')
+const { User, sequelize, UserInterest, Interest, Image } = require("../models");
+const { decode } = require("../helpers/bcrypt");
+const { sign } = require("../helpers/jwt");
 
 class UserController {
   // login user
-  static async login (req, res) {
-    const { email, password } = req.body
+  static async login(req, res, next) {
+    const { email, password } = req.body;
+    console.log(req.body);
     try {
-      const foundUser = await User.findOne({where: {email}})
+      const foundUser = await User.findOne({ where: { email } });
       if (!foundUser) {
-        res.status(401).json({message: 'Invalid Email/Password'})
-      } else {
-        const isMatch = decode(password, foundUser.password)
-        if(!isMatch) {
-          res.status(401).json({message: 'Invalid Email/Password'})
-        } else {
-          const access_token = sign({
-            id: foundUser.id,
-            email: foundUser.email
-          })
-          res.status(200).json({
-            id: foundUser.id,
-            email: foundUser.email,
-            access_token: access_token
-          })
-        }
+        throw { name: "NOTAUTHORIZED", message: "Invalid Email/Password" };
       }
+      const isMatch = decode(password, foundUser.password);
+      if (!isMatch) {
+        throw { name: "NOTAUTHORIZED", message: "Invalid Email/Password" };
+      }
+
+      const access_token = sign({
+        id: foundUser.id,
+        email: foundUser.email,
+      });
+      res.status(200).json({
+        id: foundUser.id,
+        email: foundUser.email,
+        access_token: access_token,
+      });
     } catch (error) {
-      if(error.name === 'SequelizeValidationError') {
-        error = error.errors.map((err) => err.message)
-        res.status(400).json(error)
-      } else {
-        res.status(500).json({message: 'Internal server error'})
-      }
+      // console.log(error);
+      next(error);
     }
   }
   // register
-  static async register (req, res) {
-    const { username, email, password, age, gender, photo, about } = req.body
-    const t = await sequelize.transaction()
+  static async register(req, res, next) {
+    const {
+      username,
+      email,
+      password,
+      age,
+      gender,
+      photo,
+      about,
+      location,
+      interestId,
+    } = req.body;
+    const t = await sequelize.transaction();
     try {
-      const foundUser = await User.findOne({where: {email}})
-      if(foundUser) {
-        res.status(400).json({message: 'Email is already exist'})
-      } else {
-        const newUser = await User.create({username, email, password, age, gender, photo, about}, {transaction: t})
-        await t.commit()
-        res.status(200).json({
-          id: newUser.id,
-          email: newUser.email
+      const newUser = await User.create(
+        { username, email, password, age, gender, photo, about, location },
+        { transaction: t }
+      );
+
+      const promises = interestId.map(async (interest) => {
+        await UserInterest.create(
+          {
+            interestId: interest,
+            userId: newUser.id,
+          },
+          { transaction: t }
+        );
+      });
+
+      Promise.all(promises)
+        .then(async (_) => {
+          await t.commit();
+          res.status(201).json(newUser);
         })
-      }
+        .catch((error) => {
+          throw error;
+        });
     } catch (error) {
-      await t.rollback()
-      if(error.name === 'SequelizeValidationError') {
-        error = error.errors.map((err) => err.message)
-        res.status(400).json(error)
-      } else {
-        res.status(500).json({message: 'Internal server error'})
+      await t.rollback();
+      next(error);
+    }
+  }
+
+  static async editProfile(req, res, next) {
+    const {
+      username,
+      email,
+      password,
+      age,
+      gender,
+      photo,
+      about,
+      location,
+      imgUrl,
+    } = req.body;
+
+    const { id } = req.user;
+
+    try {
+      const findUser = await User.findByPk(id);
+      if (!findUser) {
+        throw {
+          name: "NOTFOUND",
+          message: `user with id ${id} not found`,
+        };
       }
+      const updateProfile = await User.update(
+        {
+          username: username,
+          email: email,
+          password: password,
+          age: age,
+          gender: gender,
+          photo: photo,
+          about: about,
+          location: location,
+        },
+        { where: { id: findUser.id }, returning: true }
+      );
+
+      const profile = updateProfile[1][0];
+
+      const promises = imgUrl.map(async (url) => {
+        await Image.create({
+          imgUrl: url,
+          authorId: profile.id,
+        });
+      });
+
+      Promise.all(promises)
+        .then(async (_) => {
+          console.log("berhasil");
+        })
+        .catch((error) => {
+          throw error;
+        });
+
+      res.status(201).json(profile);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getInterest(req, res, next) {
+    try {
+      const interestUser = await UserInterest.findAll({
+        include: [User, Interest],
+      });
+      res.status(200).json(interestUser);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getInterestLogin(req, res, next) {
+    const { id } = req.user;
+    console.log(id);
+    try {
+      const interestUser = await UserInterest.findAll({
+        where: {
+          userId: id,
+        },
+        include: [
+          {
+            model: User,
+            attributes: {
+              exclude: ["createdAt", "updatedAt"],
+            },
+          },
+          {
+            model: Interest,
+            attributes: {
+              exclude: ["createdAt", "updatedAt"],
+            },
+          },
+        ],
+        attributes: {
+          exclude: ["createdAt", "updatedAt"],
+        },
+      });
+      res.status(200).json(interestUser);
+    } catch (error) {
+      next(error);
     }
   }
 }
 
-module.exports = UserController
+module.exports = UserController;
