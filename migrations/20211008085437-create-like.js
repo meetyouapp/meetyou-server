@@ -1,36 +1,48 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Likes', {
+    await queryInterface.createTable("Likes", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
-      userId_1: {
-        type: Sequelize.INTEGER
+      authorId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id",
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade",
       },
-      status_1: {
-        type: Sequelize.BOOLEAN
+      authorStatus: {
+        type: Sequelize.BOOLEAN,
       },
-      userId_2: {
-        type: Sequelize.INTEGER
+      targetId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id",
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade",
       },
-      status_2: {
-        type: Sequelize.BOOLEAN
+      targetStatus: {
+        type: Sequelize.BOOLEAN,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Likes');
-  }
+    await queryInterface.dropTable("Likes");
+  },
 };
