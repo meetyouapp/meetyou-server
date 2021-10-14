@@ -148,7 +148,7 @@ class UserController {
 
   static async getInterestLogin(req, res, next) {
     const { id } = req.user;
-    console.log(id);
+    // console.log(id);
     try {
       const interestUser = await UserInterest.findAll({
         where: {
