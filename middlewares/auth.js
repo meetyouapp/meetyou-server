@@ -18,7 +18,7 @@ const authentication = async (req, res, next) => {
         email,
       },
     });
-    // console.log(findUser);
+
     if (!findUser) {
       throw {
         name: "NOTAUTHORIZED",
@@ -33,7 +33,6 @@ const authentication = async (req, res, next) => {
       location: findUser.location,
       gender: findUser.gender,
     };
-    // console.log(req.user);
     next();
   } catch (err) {
     next(err);

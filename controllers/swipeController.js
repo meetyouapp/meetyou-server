@@ -13,7 +13,7 @@ class SwipeController {
           authorId: id,
         },
       });
-      console.log(likedByAuthor);
+      // console.log(likedByAuthor);
       // array of user id that already liked/disliked by current logged in user
       let arrLiked = likedByAuthor.map((user) => {
         return user.id;
@@ -34,7 +34,7 @@ class SwipeController {
           },
         ],
       });
-      console.log(userList);
+      // console.log(userList);
       // filter user that already liked/disliked, and itself
       let filteredUser = userList.map((user) => {
         if (!arrLiked.includes(user.id) && user.id !== id) {
