@@ -6,7 +6,7 @@ class UserController {
   // login user
   static async login(req, res, next) {
     const { email, password } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     try {
       const foundUser = await User.findOne({ where: { email } });
       if (!foundUser) {
@@ -173,6 +173,23 @@ class UserController {
         },
       });
       res.status(200).json(interestUser);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getProfileId(req, res, next) {
+    const { id } = req.body;
+    try {
+      const user = await UserInterest.findByPk(id, {
+        include: {
+          model: UserInterest,
+          include: {
+            model: Interest,
+          },
+        },
+      });
+      res.status(200).json(user);
     } catch (error) {
       next(error);
     }
