@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const SwipeController = require("../controllers/swipeController");
 const UserController = require("../controllers/userController");
 const { errorHandler } = require("../errorHandlers/errorHandler");
 const { authentication } = require("../middlewares/auth");
@@ -16,17 +17,17 @@ router.use(authentication);
 router.get("/interest", UserController.getInterestLogin); //get semua interest user yg login
 router.put("/profile", UserController.editProfile); // image ditambahin after login pertama kali
 
-router.get("/profile/:id") // untuk detail user
+router.get("/profile", UserController.getProfileId); // untuk detail user
 
 // endpoint explore
-router.get("/user"); // list user yang akan ditampilkan diexplore (location), yang match tidak sama dengan false, dan user itu sendiri, interest (optional, styling)
+router.get("/user", SwipeController.showUserList); // list user yang akan ditampilkan diexplore (location), yang match tidak sama dengan false, dan user itu sendiri, interest (optional, styling)
 
 // cek dulu, apakah calon target tersebut sudah like user yang sedang login
 // kalo belum user login sebagai authorId => statusnya true, target status null
-router.post("/swiperight"); // action, antara like atau dislike.
+router.post("/swiperight", SwipeController.swipeRight); // action, antara like atau dislike.
 
 // kalo udah ada tabel yang dia sebagai target dari user yang mau dilike, swipe kiri = false, kanan = true
-router.post("/swipeleft");
+router.post("/swipeleft", SwipeController.swipeLeft);
 
 // jika authorStatus dan targetStatus === true, kita buat table chat
 
