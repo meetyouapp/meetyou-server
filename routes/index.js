@@ -3,6 +3,7 @@ const ChatController = require("../controllers/chatController");
 const InterestController = require("../controllers/interestController");
 const SwipeController = require("../controllers/swipeController");
 const UserController = require("../controllers/userController");
+const VideoCallController = require("../controllers/videoCallController")
 const { errorHandler } = require("../errorHandlers/errorHandler");
 const { authentication } = require("../middlewares/auth");
 
@@ -38,7 +39,7 @@ router.post("/swipeleft", SwipeController.swipeLeft);
 router.get("/chat", ChatController.getChat);
 router.post("/chat");
 
-router.get("/videocall");
+router.post("/videocall", VideoCallController.createRoom);
 
 router.get("/meetup");
 router.post("/meetup");
