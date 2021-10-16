@@ -8,7 +8,7 @@ const {
 } = require("../models");
 const { Op } = require('sequelize')
 
-const { direction, distance } = require('../helpers/distance')
+const { distance } = require('../helpers/distance')
 
 class SwipeController {
   // show user list in explore page (based on location, exclude if targetStatus is false)
@@ -16,7 +16,6 @@ class SwipeController {
     const { id, email, username, latitude, longitude, gender } = req.user;
     const dataGender = gender === "female" ? "male" : "female";
 
-    // console.log(latitude, longitude, "COBA");
     try {
       // array of user id that already liked/disliked by current logged in user
       const swipedByAuthor = await Like.findAll({
