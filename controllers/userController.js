@@ -1,4 +1,11 @@
-const { User, sequelize, UserInterest, Interest, Image } = require("../models");
+const {
+  User,
+  sequelize,
+  UserInterest,
+  Interest,
+  Image,
+  Like,
+} = require("../models");
 const { decode } = require("../helpers/bcrypt");
 const { sign } = require("../helpers/jwt");
 
@@ -191,6 +198,42 @@ class UserController {
       });
       res.status(200).json(user);
     } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getChat(req, res, next) {
+    const { id } = req.user;
+    try {
+      const chatListAuthor = await Like.findAll({
+        where: {
+          authorId: id,
+          authorStatus: true,
+          targetStatus: true,
+        },
+        include: [
+          { model: User, as: "author" },
+          { model: User, as: "target" },
+        ],
+      });
+
+      const chatListTarget = await Like.findAll({
+        where: {
+          targetId: id,
+          authorStatus: true,
+          targetStatus: true,
+        },
+        include: [
+          { model: User, as: "author" },
+          { model: User, as: "target" },
+        ],
+      });
+
+      const result = [...chatListAuthor, ...chatListTarget];
+
+      res.status(200).json(result);
+    } catch (error) {
+      console.log(error);
       next(error);
     }
   }

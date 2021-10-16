@@ -45,6 +45,9 @@ module.exports = (sequelize, DataTypes) => {
             args: true,
             msg: "Invalid email format",
           },
+          notNull: {
+            msg: "Email is required",
+          },
         },
       },
       password: {
@@ -60,7 +63,19 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      age: DataTypes.INTEGER,
+      age: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        validate: {
+          notNull: {
+            msg: "Age is required",
+          },
+          min: {
+            args: [17],
+            msg: "Minimum age is 17 years",
+          },
+        },
+      },
       gender: {
         allowNull: false,
         type: DataTypes.STRING,
@@ -74,17 +89,29 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      photo: DataTypes.STRING,
+      photo: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            args: true,
+            msg: "Photo is required",
+          },
+          notNull: {
+            msg: "Photo is required",
+          },
+        },
+      },
       location: {
         allowNull: false,
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
             args: true,
-            msg: "location is required",
+            msg: "Location is required",
           },
           notNull: {
-            msg: "location is required",
+            msg: "Location is required",
           },
         },
       },

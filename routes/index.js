@@ -33,7 +33,7 @@ router.post("/swipeleft", SwipeController.swipeLeft);
 
 // endpoint chat
 // chat (firestore), videocall (daily api), calendar (expo react native calendar), rekomendasi tempat date
-router.get("/chat");
+router.get("/chat", UserController.getChat);
 router.post("/chat");
 
 router.get("/videocall");
