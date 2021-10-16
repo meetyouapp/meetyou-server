@@ -10,7 +10,6 @@ const {
 class SwipeController {
   // show user list in explore page (based on location, exclude if targetStatus is false)
   static async showUserList(req, res, next) {
-    // console.log(req.user);
     const { id, email, username, location, gender } = req.user;
     const dataGender = gender === "female" ? "male" : "female";
 
@@ -20,13 +19,11 @@ class SwipeController {
           authorId: id,
         },
       });
-      // console.log(likedByAuthor);
       // array of user id that already liked/disliked by current logged in user
-      let arrLiked = likedByAuthor.map((user) => {
-        return user.id;
+      let arrLiked = await likedByAuthor.map((user) => {
+        return user.targetId
       });
 
-      // console.log(arrLiked);
       const userList = await User.findAll({
         where: {
           gender: dataGender,
@@ -41,9 +38,8 @@ class SwipeController {
           },
         ],
       });
-      // console.log(userList);
       // filter user that already liked/disliked, and itself
-      let filteredUser = await userList.map((user) => {
+      let filteredUser = await userList.filter((user) => {
         if (!arrLiked.includes(user.id) && user.id !== id) {
           return user;
         }
