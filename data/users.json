@@ -90,7 +90,7 @@
     "about": "heyy, let us be friends mmkay?"
   },
   {
-     "username": "jennie",
+    "username": "jennie",
     "email": "jennie@mail.com",
     "password": "123456",
     "age": 25,
@@ -100,7 +100,7 @@
     "about": "am i prettier than lisa?"
   },
   {
-     "username": "rose",
+    "username": "rose",
     "email": "rose@mail.com",
     "password": "123456",
     "age": 24,
@@ -110,7 +110,7 @@
     "about": "swipe right if you need someone to talk to :)"
   },
   {
-     "username": "park",
+    "username": "park",
     "email": "park@mail.com",
     "password": "123456",
     "age": 32,
@@ -120,7 +120,7 @@
     "about": "visit us at danbam, itaewon"
   },
   {
-     "username": "hanso",
+    "username": "hanso",
     "email": "hanso@mail.com",
     "password": "123456",
     "age": 26,
@@ -130,7 +130,7 @@
     "about": "<3"
   },
   {
-     "username": "eiza",
+    "username": "eiza",
     "email": "eiza@mail.com",
     "password": "123456",
     "age": 31,
@@ -140,7 +140,7 @@
     "about": "hit me up!"
   },
   {
-     "username": "zayn",
+    "username": "zayn",
     "email": "zayn@mail.com",
     "password": "123456",
     "age": 28,

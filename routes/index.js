@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const ChatController = require("../controllers/chatController");
+const InterestController = require("../controllers/interestController");
 const SwipeController = require("../controllers/swipeController");
 const UserController = require("../controllers/userController");
 const { errorHandler } = require("../errorHandlers/errorHandler");
@@ -14,7 +16,7 @@ router.post("/register", UserController.register); // lat-long location user
 
 // authentication mulai dari sini
 router.use(authentication);
-router.get("/interest", UserController.getInterestLogin); //get semua interest user yg login
+router.get("/interest", InterestController.getInterestLogin); //get semua interest user yg login
 router.put("/profile", UserController.editProfile); // image ditambahin after login pertama kali
 
 router.get("/profile", UserController.getProfileId); // untuk detail user
@@ -33,7 +35,7 @@ router.post("/swipeleft", SwipeController.swipeLeft);
 
 // endpoint chat
 // chat (firestore), videocall (daily api), calendar (expo react native calendar), rekomendasi tempat date
-router.get("/chat", UserController.getChat);
+router.get("/chat", ChatController.getChat);
 router.post("/chat");
 
 router.get("/videocall");
