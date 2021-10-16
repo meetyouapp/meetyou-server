@@ -7,7 +7,7 @@ module.exports = {
        el.createdAt = new Date();
        el.updatedAt = new Date();
      });
-     await queryInterface.bulkInsert("Users", data, {});
+     await queryInterface.bulkInsert("Users", data, {validate: true, individualHooks: true});
   },
 
   down: async (queryInterface, Sequelize) => {

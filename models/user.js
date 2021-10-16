@@ -118,13 +118,18 @@ module.exports = (sequelize, DataTypes) => {
       about: DataTypes.STRING,
     },
     {
+      hooks: {
+        beforeCreate: (user, options) => {
+          user.password = encode(user.password)
+        },
+        beforeBulkCreate: async (user, options) => {
+          const hashed = await encode(user.password)
+          user.password = hashed
+        },
+      },
       sequelize,
       modelName: "User",
     }
   );
-
-  User.beforeCreate((instance, options) => {
-    instance.password = encode(instance.password);
-  });
   return User;
 };
