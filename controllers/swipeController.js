@@ -1,4 +1,11 @@
-const { User, Like, Image, UserInterest, Interest } = require("../models");
+const {
+  User,
+  Like,
+  Image,
+  UserInterest,
+  Interest,
+  Chat,
+} = require("../models");
 
 class SwipeController {
   // show user list in explore page (based on location, exclude if targetStatus is false)
@@ -69,21 +76,26 @@ class SwipeController {
         });
         res.status(201).json(swipedRight);
         // it the target already liked/disliked the current user
-      } else {
-        const match = await Like.update(
-          {
-            targetStatus: true,
+      }
+      const match = await Like.update(
+        {
+          targetStatus: true,
+        },
+        {
+          where: {
+            authorId: targetId,
+            targetId: id,
           },
-          {
-            where: {
-              authorId: targetId,
-              targetId: id,
-            },
-            returning: true,
-          }
-        );
-        const result = match[1][0];
-        res.status(200).json(result);
+          returning: true,
+        }
+      );
+      const result = match[1][0];
+      if (result.targetStatus && result.authorStatus === true) {
+        const createChat = await Chat.create({
+          authorId: result.authorId,
+          targetId: result.targetId,
+        });
+        res.status(200).json(createChat);
       }
     } catch (error) {
       res.status(500).json(error);
