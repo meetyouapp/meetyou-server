@@ -11,10 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Chat.belongsTo(models.User, { as: "author", foreinKey: "authorId" });
+      Chat.belongsTo(models.User, { as: "target", foreinKey: "targetId" });
     }
   };
   Chat.init({
-    likeId: DataTypes.INTEGER,
+    authorId: DataTypes.INTEGER,
+    targetId: DataTypes.INTEGER,
     message: DataTypes.STRING
   }, {
     sequelize,
