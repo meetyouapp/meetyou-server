@@ -6,6 +6,7 @@ const {
   Interest,
   Chat,
 } = require("../models");
+const { Op } = require('sequelize')
 
 class SwipeController {
   // show user list in explore page (based on location, exclude if targetStatus is false)
@@ -14,14 +15,27 @@ class SwipeController {
     const dataGender = gender === "female" ? "male" : "female";
 
     try {
-      const likedByAuthor = await Like.findAll({
+      // array of user id that already liked/disliked by current logged in user
+      const swipedByAuthor = await Like.findAll({
         where: {
           authorId: id,
         },
       });
-      // array of user id that already liked/disliked by current logged in user
-      let arrLiked = await likedByAuthor.map((user) => {
+      let arrSwiped = await swipedByAuthor.map((user) => {
         return user.targetId
+      });
+
+      // array of user id that that liked/disliked back by current logged in user
+      const swipedBack = await Like.findAll({
+        where: {
+          targetId: id,
+          targetStatus: {
+            [Op.not]: null
+          }
+        },
+      });
+      let arrSwipedBack = await swipedBack.map((user) => {
+        return user.authorId
       });
 
       const userList = await User.findAll({
@@ -40,7 +54,7 @@ class SwipeController {
       });
       // filter user that already liked/disliked, and itself
       let filteredUser = await userList.filter((user) => {
-        if (!arrLiked.includes(user.id) && user.id !== id) {
+        if (!arrSwiped.includes(user.id) &&  !arrSwipedBack.includes(user.id) && user.id !== id) {
           return user;
         }
       });
