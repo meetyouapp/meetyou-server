@@ -36,12 +36,12 @@ class SwipeController {
       });
       // console.log(userList);
       // filter user that already liked/disliked, and itself
-      let filteredUser = userList.map((user) => {
+      let filteredUser = await userList.map((user) => {
         if (!arrLiked.includes(user.id) && user.id !== id) {
           return user;
         }
       });
-      res.status("200").json(filteredUser);
+      res.status(200).json(filteredUser);
     } catch (error) {
       res.status(500).json(error);
     }
