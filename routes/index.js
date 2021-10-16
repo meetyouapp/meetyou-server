@@ -45,7 +45,8 @@ router.get("/meetup");
 router.post("/meetup");
 router.put("/meetup");
 
-router.get("/place");
+router.get("/location");
+router.post("/location");
 
 router.use(errorHandler);
 

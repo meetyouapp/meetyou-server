@@ -102,19 +102,8 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      location: {
-        allowNull: false,
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            args: true,
-            msg: "Location is required",
-          },
-          notNull: {
-            msg: "Location is required",
-          },
-        },
-      },
+      latitude: DataTypes.GEOMETRY,
+      longitude: DataTypes.GEOMETRY,
       about: DataTypes.STRING,
     },
     {

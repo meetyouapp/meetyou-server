@@ -30,7 +30,8 @@ const authentication = async (req, res, next) => {
       id: findUser.id,
       email: findUser.email,
       username: findUser.username,
-      location: findUser.location,
+      latitude: findUser.latitude,
+      longitude: findUser.longitude,
       gender: findUser.gender,
     };
     next();
