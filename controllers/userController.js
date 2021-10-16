@@ -51,25 +51,24 @@ class UserController {
         { transaction: t }
       );
 
-      // const promises = interestId.map(async (interest) => {
-      //   await UserInterest.create(
-      //     {
-      //       interestId: interest,
-      //       userId: newUser.id,
-      //     },
-      //     { transaction: t }
-      //   );
-      // });
-      await t.commit();
-      res.status(201).json(newUser);
-      // Promise.all(promises)
-      //   .then(async (_) => {
-      //     await t.commit();
-      //     res.status(201).json(newUser);
-      //   })
-      //   .catch((error) => {
-      //     throw error;
-      //   });
+      const promises = interestId.map(async (interest) => {
+        await UserInterest.create(
+          {
+            interestId: interest,
+            userId: newUser.id,
+          },
+          { transaction: t }
+        );
+      });
+
+      Promise.all(promises)
+        .then(async (_) => {
+          await t.commit();
+          res.status(201).json(newUser);
+        })
+        .catch((error) => {
+          throw error;
+        });
     } catch (error) {
       await t.rollback();
       next(error);
