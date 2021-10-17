@@ -102,8 +102,8 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      latitude: DataTypes.GEOMETRY,
-      longitude: DataTypes.GEOMETRY,
+      latitude: DataTypes.DOUBLE,
+      longitude: DataTypes.DOUBLE,
       about: DataTypes.STRING,
     },
     {
