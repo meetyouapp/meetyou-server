@@ -39,6 +39,7 @@ router.post("/swipeleft", SwipeController.swipeLeft);
 router.get("/chat", ChatController.getChat);
 router.post("/chat");
 
+router.get("/videocall/:name", VideoCallController.getRoom);
 router.post("/videocall", VideoCallController.createRoom);
 
 router.get("/meetup");

@@ -17,7 +17,7 @@ class VideoCallController {
                     privacy: 'public',
                     properties: {
                         enable_chat: true,
-                        start_video_off: true,
+                        start_video_off: false,
                         start_audio_off: false,
                         max_participants: 2,
                         autojoin: true
@@ -26,7 +26,23 @@ class VideoCallController {
             })
             res.status(201).json(newRoom.data.url)
         } catch (error) {
-            // console.log(error, '=========error========')
+            next(error)
+        }
+    }
+
+    static async getRoom (req, res, next) {
+        try {
+            const { name } = req.params
+            let room = await axios({
+                method: 'GET',
+                url: `https://api.daily.co/v1/rooms/${name}`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${DAILY_KEY}`,
+                }
+            })
+            res.status(200).json(room.data.url)
+        } catch (error) {
             next(error)
         }
     }
