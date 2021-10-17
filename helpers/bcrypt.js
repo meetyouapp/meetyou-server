@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const salt = 10
 
 function encode(plainPassword) {
@@ -6,7 +6,7 @@ function encode(plainPassword) {
 }
 
 function decode(plainPassword, hashedPassword) {
-  return bcrypt.compareSync(plainPassword,hashedPassword)
+  return bcrypt.compareSync(plainPassword, hashedPassword)
 }
 
 module.exports = { encode, decode }
