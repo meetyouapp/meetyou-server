@@ -68,6 +68,7 @@ class UserController {
         });
     } catch (error) {
       await t.rollback();
+      console.log(error);
       next(error);
     }
   }

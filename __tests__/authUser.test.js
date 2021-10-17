@@ -61,7 +61,8 @@ describe("User Routes Test", () => {
           expect(body).toHaveProperty("photo", userData.photo);
           expect(body).toHaveProperty("about", userData.about);
           done();
-        });
+        })
+        .catch((error) => console.log(error));
     });
 
     test("400 Failed register - should return error if email is null", (done) => {
