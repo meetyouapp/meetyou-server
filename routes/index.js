@@ -19,6 +19,7 @@ router.post("/register", UserController.register); // lat-long location user
 router.use(authentication);
 router.get("/interest", InterestController.getInterestLogin); //get semua interest user yg login
 router.put("/profile", UserController.editProfile); // image ditambahin after login pertama kali
+router.patch("/profile/location", UserController.editLocationProfile); // location update
 
 router.get("/profile", UserController.getProfileId); // untuk detail user
 
@@ -46,7 +47,8 @@ router.get("/meetup");
 router.post("/meetup");
 router.put("/meetup");
 
-router.get("/place");
+router.get("/location");
+router.post("/location");
 
 router.use(errorHandler);
 

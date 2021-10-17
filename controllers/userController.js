@@ -1,4 +1,4 @@
-const { User, sequelize, UserInterest, Interest, Image } = require("../models");
+const { User, sequelize, UserInterest, Interest, Image } = require("../models/index");
 const { decode } = require("../helpers/bcrypt");
 const { sign } = require("../helpers/jwt");
 
@@ -84,7 +84,6 @@ class UserController {
       gender,
       photo,
       about,
-      location,
       imgUrl,
     } = req.body;
 
@@ -106,8 +105,7 @@ class UserController {
           age: age,
           gender: gender,
           photo: photo,
-          about: about,
-          location: location,
+          about: about
         },
         { where: { id: findUser.id }, returning: true }
       );
@@ -131,6 +129,39 @@ class UserController {
 
       res.status(201).json(profile);
     } catch (error) {
+      next(error);
+    }
+  }
+
+  static async editLocationProfile(req, res, next) {
+    const {
+      latitude,
+      longitude
+    } = req.body;
+
+    const { id } = req.user;
+
+    try {
+      const findUser = await User.findByPk(id);
+      if (!findUser) {
+        throw {
+          name: "NOTFOUND",
+          message: `user with id ${id} not found`,
+        };
+      } 
+      const updateProfileLocation = await User.update(
+        {
+          latitude: latitude,
+          longitude: longitude
+        },
+        { where: { id: findUser.id }, returning: true }
+      );
+
+      const profile = updateProfileLocation[1][0];
+
+      res.status(201).json(profile);
+    } catch (error) {
+      console.log();
       next(error);
     }
   }
