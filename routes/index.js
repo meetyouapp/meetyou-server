@@ -3,7 +3,7 @@ const ChatController = require("../controllers/chatController");
 const InterestController = require("../controllers/interestController");
 const SwipeController = require("../controllers/swipeController");
 const UserController = require("../controllers/userController");
-const VideoCallController = require("../controllers/videoCallController")
+const VideoCallController = require("../controllers/videoCallController");
 const { errorHandler } = require("../errorHandlers/errorHandler");
 const { authentication } = require("../middlewares/auth");
 
@@ -18,8 +18,8 @@ router.post("/register", UserController.register); // lat-long location user
 // authentication mulai dari sini
 router.use(authentication);
 router.get("/interest", InterestController.getInterestLogin); //get semua interest user yg login
-router.put("/profile", UserController.editProfile); // image ditambahin after login pertama kali
 router.patch("/profile/location", UserController.editLocationProfile); // location update
+router.put("/profile", UserController.editProfile); // image ditambahin after login pertama kali
 
 router.get("/profile", UserController.getProfileId); // untuk detail user
 

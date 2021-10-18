@@ -102,18 +102,24 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      latitude: DataTypes.DOUBLE,
-      longitude: DataTypes.DOUBLE,
+      latitude: {
+        type: DataTypes.DOUBLE,
+        allowNull: true,
+      },
+      longitude: {
+        type: DataTypes.DOUBLE,
+        allowNull: true,
+      },
       about: DataTypes.STRING,
     },
     {
       hooks: {
         beforeCreate: (user, options) => {
-          user.password = encode(user.password)
+          user.password = encode(user.password);
         },
         beforeBulkCreate: async (user, options) => {
-          const hashed = await encode(user.password)
-          user.password = hashed
+          const hashed = await encode(user.password);
+          user.password = hashed;
         },
       },
       sequelize,

@@ -6,9 +6,9 @@ const {
   Interest,
   Chat,
 } = require("../models");
-const { Op } = require('sequelize')
+const { Op } = require("sequelize");
 
-const { distance } = require('../helpers/distance')
+const { distance } = require("../helpers/distance");
 
 class SwipeController {
   // show user list in explore page (based on location, exclude if targetStatus is false)
@@ -24,7 +24,7 @@ class SwipeController {
         },
       });
       let arrSwiped = await swipedByAuthor.map((user) => {
-        return user.targetId
+        return user.targetId;
       });
 
       // array of user id that that liked/disliked back by current logged in user
@@ -32,12 +32,12 @@ class SwipeController {
         where: {
           targetId: id,
           targetStatus: {
-            [Op.not]: null
-          }
+            [Op.not]: null,
+          },
         },
       });
       let arrSwipedBack = await swipedBack.map((user) => {
-        return user.authorId
+        return user.authorId;
       });
 
       const userList = await User.findAll({
@@ -56,8 +56,12 @@ class SwipeController {
       });
       // filter user that already liked/disliked, and itself
       let filteredUser = await userList.filter((user) => {
-        if (!arrSwiped.includes(user.id) &&  !arrSwipedBack.includes(user.id) && user.id !== id 
-        && distance(latitude, user.latitude, longitude, user.longitude) < 100) {
+        if (
+          !arrSwiped.includes(user.id) &&
+          !arrSwipedBack.includes(user.id) &&
+          user.id !== id &&
+          distance(latitude, user.latitude, longitude, user.longitude) < 100
+        ) {
           return user;
         }
       });

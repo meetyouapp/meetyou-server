@@ -1,4 +1,10 @@
-const { User, sequelize, UserInterest, Interest, Image } = require("../models/index");
+const {
+  User,
+  sequelize,
+  UserInterest,
+  Interest,
+  Image,
+} = require("../models/index");
 const { decode } = require("../helpers/bcrypt");
 const { sign } = require("../helpers/jwt");
 
@@ -33,21 +39,12 @@ class UserController {
   }
   // register
   static async register(req, res, next) {
-    const {
-      username,
-      email,
-      password,
-      age,
-      gender,
-      photo,
-      about,
-      location,
-      interestId,
-    } = req.body;
+    const { username, email, password, age, gender, photo, about, interestId } =
+      req.body;
     const t = await sequelize.transaction();
     try {
       const newUser = await User.create(
-        { username, email, password, age, gender, photo, about, location },
+        { username, email, password, age, gender, photo, about },
         { transaction: t }
       );
 
@@ -71,21 +68,14 @@ class UserController {
         });
     } catch (error) {
       await t.rollback();
+      console.log(error);
       next(error);
     }
   }
 
   static async editProfile(req, res, next) {
-    const {
-      username,
-      email,
-      password,
-      age,
-      gender,
-      photo,
-      about,
-      imgUrl,
-    } = req.body;
+    const { username, email, password, age, gender, photo, about, imgUrl } =
+      req.body;
 
     const { id } = req.user;
 
@@ -105,7 +95,7 @@ class UserController {
           age: age,
           gender: gender,
           photo: photo,
-          about: about
+          about: about,
         },
         { where: { id: findUser.id }, returning: true }
       );
@@ -134,10 +124,7 @@ class UserController {
   }
 
   static async editLocationProfile(req, res, next) {
-    const {
-      latitude,
-      longitude
-    } = req.body;
+    const { latitude, longitude } = req.body;
 
     const { id } = req.user;
 
@@ -148,11 +135,11 @@ class UserController {
           name: "NOTFOUND",
           message: `user with id ${id} not found`,
         };
-      } 
+      }
       const updateProfileLocation = await User.update(
         {
           latitude: latitude,
-          longitude: longitude
+          longitude: longitude,
         },
         { where: { id: findUser.id }, returning: true }
       );
