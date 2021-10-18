@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "test": "NODE_ENV=test npx jest --runInBand --detectOpenHandles --forceExit",
+    "test": "npx jest --runInBand --detectOpenHandles --coverage --forceExit",
     "dev": "nodemon app.js",
     "db-dev": "sequelize-cli --env=test db:drop && sequelize-cli --env=test db:create && sequelize-cli --env=test db:migrate && sequelize-cli --env=test db:seed:all"
   },

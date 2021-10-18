@@ -14,4 +14,4 @@ app.listen(port, () => {
   console.log(`meetyou-server running on port`, port);
 });
 
-// module.exports = app;
+module.exports = app;

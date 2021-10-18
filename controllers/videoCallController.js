@@ -24,7 +24,7 @@ class VideoCallController {
                     }
                 })
             })
-            res.status(201).json(newRoom.data.url)
+            res.status(201).json({url: newRoom.data.url})
         } catch (error) {
             next(error)
         }
@@ -41,7 +41,7 @@ class VideoCallController {
                     'Authorization': `Bearer ${DAILY_KEY}`,
                 }
             })
-            res.status(200).json(room.data.url)
+            res.status(200).json({url: room.data.url})
         } catch (error) {
             next(error)
         }
