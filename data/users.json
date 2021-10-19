@@ -13,6 +13,7 @@
   {
     "username": "Alexandra",
     "email": "alexandra@mail.com",
+    "password": "123456",
     "age": 35,
     "gender": "female",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/alexandra-daddario-9_68hFtvYdI.jpeg?updatedAt=1634356958552",
@@ -23,6 +24,7 @@
   {
     "username": "Tom",
     "email": "tom@mail.com",
+    "password": "123456",
     "age": 40,
     "gender": "male",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/o-img-52826-profil-tom-hiddleston-instagramattwhiddleston_xDsjv4lCp.jpg?updatedAt=1634357047310",
@@ -33,6 +35,7 @@
   {
     "username": "Zendaya",
     "email": "zendaya@mail.com",
+    "password": "123456",
     "age": 25,
     "gender": "female",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/Screenshot1906-6fc696a44dba4097a4a42961f77f244f_Ue8nyseaV.png?updatedAt=1634357095193",
@@ -43,6 +46,7 @@
   {
     "username": "Ryan",
     "email": "ryan@mail.com",
+    "password": "123456",
     "age": 44,
     "gender": "male",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/e806d55846a9922f6a493d625b_Z1ttkp1R_.jpg?updatedAt=1634357195762",
@@ -53,6 +57,7 @@
   {
     "username": "Olivia",
     "email": "olivia@mail.com",
+    "password": "123456",
     "age": 18,
     "gender": "female",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/Olivia_Rodrigo_at_White_House_yr_56Psag.jpg?updatedAt=1634357327838",
@@ -63,6 +68,7 @@
   {
     "username": "tommy",
     "email": "tommy@mail.com",
+    "password": "123456",
     "age": 45,
     "gender": "male",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/EPIBjaFWkAIeyNn_eFsV3A3d1.jpg?updatedAt=1634357559828",
@@ -73,6 +79,7 @@
   {
     "username": "anna",
     "email": "anna@mail.com",
+    "password": "123456",
     "age": 25,
     "gender": "female",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/any-taylor-joy-cabelo_yqm_X_1DZdL.jpg?updatedAt=1634357631040",
@@ -83,6 +90,7 @@
   {
     "username": "lisa",
     "email": "lisa@mail.com",
+    "password": "123456",
     "age": 24,
     "gender": "female",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/lalalalisa-m-p-2129195502268248962-2-2129195498174662945-e35588c60285f48c50afbf6fa9e5319a_t4YTEYd7th-.jpg?updatedAt=1634357815234",
@@ -93,6 +101,7 @@
   {
     "username": "jennie",
     "email": "jennie@mail.com",
+    "password": "123456",
     "age": 25,
     "gender": "female",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/97cbb7e069fa5ad355a45bbd2eaa3a67_SQQXXZOha_v.jpg?updatedAt=1634357871599",
@@ -103,6 +112,7 @@
   {
     "username": "rose",
     "email": "rose@mail.com",
+    "password": "123456",
     "age": 24,
     "gender": "female",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/8a27968386a2e26b5cfcd9828185931e_qYy704QdO.jpg?updatedAt=1634357898699",
@@ -113,6 +123,7 @@
   {
     "username": "park",
     "email": "park@mail.com",
+    "password": "123456",
     "age": 32,
     "gender": "male",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/uk43076n9944w8b8u275-511a2622c15682bac228c68284743d7b_50QF1cb_6.jpg?updatedAt=1634358107901",
@@ -123,6 +134,7 @@
   {
     "username": "hanso",
     "email": "hanso@mail.com",
+    "password": "123456",
     "age": 26,
     "gender": "female",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/017641300_1588523448-80483097_2526088677513560_6579602214997952877_n_1KfFKb83B.webp?updatedAt=1634358366080",
@@ -133,6 +145,7 @@
   {
     "username": "eiza",
     "email": "eiza@mail.com",
+    "password": "123456",
     "age": 31,
     "gender": "female",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/images__2__VlDQH7mQQ.jpeg?updatedAt=1634358543649",
@@ -143,6 +156,7 @@
   {
     "username": "zayn",
     "email": "zayn@mail.com",
+    "password": "123456",
     "age": 28,
     "gender": "male",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/991942686_673eOMGu4.jpeg?updatedAt=1634358611346",

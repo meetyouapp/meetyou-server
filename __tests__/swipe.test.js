@@ -12,6 +12,8 @@ const userData2 = {
     photo:
       "https://t1.daumcdn.net/news/202003/03/starnews/20200303124859622yvkl.jpg",
     about: "hai cewe",
+    latitude: -6.174054416454042,
+    longitude: 106.82663976097285,
     interestId: [1, 3, 7],
 };
 
@@ -55,9 +57,10 @@ describe("GET /users [success case]", () => {
             .get("/users")
             .set({ access_token })
             .then(resp => {
-                console.log(resp.body, "===line28===")
+                console.log(resp.body, "===line58===")
                 expect(resp.status).toBe(200)
-                expect(resp.body).toBe()
+                // expect(resp.body).toBe([])
+                expect(Array.isArray(resp.body)).toBe(true);
                 done()
             })
     })
@@ -103,6 +106,7 @@ describe("POST /swiperight [success case]", () => {
                 done()
             })
     })
+
 })
 
 describe("GET /users [fail case]", () => {

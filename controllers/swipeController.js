@@ -91,28 +91,28 @@ class SwipeController {
           targetId: targetId,
           targetStatus: null,
         });
-        // res.status(201).json(swipedRight);
-        // it the target already liked/disliked the current user
-      }
-      const match = await Like.update(
-        {
-          targetStatus: true,
-        },
-        {
-          where: {
-            authorId: targetId,
-            targetId: id,
+        res.status(201).json(swipedRight);
+      // if the target already liked/disliked the current user
+      } else {
+        const match = await Like.update(
+          {
+            targetStatus: true,
           },
-          returning: true,
+          {
+            where: {
+              id: likedData.id
+            },
+            returning: true,
+          }
+        );
+        const result = match[1][0];
+        if (result.targetStatus && result.authorStatus === true) {
+          const createChat = await Chat.create({
+            authorId: result.authorId,
+            targetId: result.targetId,
+          });
+          res.status(200).json(createChat);
         }
-      );
-      const result = match[1][0];
-      if (result.targetStatus && result.authorStatus === true) {
-        const createChat = await Chat.create({
-          authorId: result.authorId,
-          targetId: result.targetId,
-        });
-        res.status(200).json(createChat);
       }
     } catch (error) {
       res.status(500).json(error);
@@ -147,8 +147,7 @@ class SwipeController {
           },
           {
             where: {
-              authorId: targetId,
-              targetId: id,
+              id: likedData.id
             },
             returning: true,
           }
