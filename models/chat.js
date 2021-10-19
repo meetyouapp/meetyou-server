@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   Chat.init({
     authorId: DataTypes.INTEGER,
     targetId: DataTypes.INTEGER,
-    message: DataTypes.STRING
+    message: DataTypes.STRING,
+    urlVideoCall: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Chat',

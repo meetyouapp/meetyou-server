@@ -1,41 +1,33 @@
 [
   {
-    "id": 1,
     "imgUrl": "https://ik.imagekit.io/xvfgr2ixls8/olivia-rodrigo-social-media-photos-07-15-2020-2_thumbnail_Ym0MhlzZW.jpg?updatedAt=1634484798952",
     "authorId": 6
   },
   {
-    "id": 2,
     "imgUrl": "https://ik.imagekit.io/xvfgr2ixls8/tumblr_psud1fk1In1v3pieu_1280_MKtWNSxPleT.jpg?updatedAt=1634484799772",
     "authorId": 6
   },
   {
-    "id": 3,
     "imgUrl": "https://ik.imagekit.io/xvfgr2ixls8/olivia_rodrigo_bucket_hat_gBzSu6b10.jpeg?updatedAt=1634484801460",
     "authorId": 6
   },
   {
-    "id": 4,
     "imgUrl": "https://ik.imagekit.io/xvfgr2ixls8/tumblr_2289f038a9e39d92caba5e6bb8e33c98_fdf66a0b_1280_vGDKzJR9b.jpg?updatedAt=1634484800602",
     "authorId": 6
   },
   {
-    "id": 5,
     "imgUrl": "https://ik.imagekit.io/xvfgr2ixls8/chris_hemsworth_fulfills_his_only_birthday_wish_leaving_his_kids_unhappy_thor_director_trolls_actor_with_liam_sm_ZDytCWRve.jpg?updatedAt=1634672083655",
     "authorId": 1
   },
   {
-    "id": 6,
     "imgUrl": "https://ik.imagekit.io/xvfgr2ixls8/FEATURED-IMAGE-Chris-Hemsworth-Hairstyle-1_7_jWsB5Su.jpg?updatedAt=1634672083475",
     "authorId": 1
   },
   {
-    "id": 7,
     "imgUrl": "https://ik.imagekit.io/xvfgr2ixls8/DqIITJzX4AAtUDl_Hq3ZOCNBs.jpg?updatedAt=1634672084907",
     "authorId": 1
   },
   {
-    "id": 8,
     "imgUrl": "https://ik.imagekit.io/xvfgr2ixls8/6b39ecc83a07e3d3d05fbce68786a150_3lJGG5NWB.jpg?updatedAt=1634672085862",
     "authorId": 1
   }
