@@ -91,7 +91,7 @@ class SwipeController {
           targetId: targetId,
           targetStatus: null,
         });
-        res.status(201).json(swipedRight);
+        // res.status(201).json(swipedRight);
         // it the target already liked/disliked the current user
       }
       const match = await Like.update(

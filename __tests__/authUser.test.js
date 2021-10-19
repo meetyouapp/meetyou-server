@@ -40,10 +40,9 @@ describe("User Routes Test", () => {
     });
 
     afterAll((done) => {
-      queryInterface
-        .bulkDelete("Users", {})
+      User.destroy({truncate: true, cascade: true})
         .then(() => done())
-        .catch((err) => done(err));
+        .catch((err) => done(err))
     });
 
     test("201 Success register - should create new User", (done) => {
