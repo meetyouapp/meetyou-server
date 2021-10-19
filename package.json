@@ -4,8 +4,9 @@
   "description": "Server for Meetyou App",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "npx jest --runInBand --detectOpenHandles --coverage --forceExit",
+    "start": "node ./bin/www",
+    "build": "nodemon ./bin/www",
+    "test": "cross-env NODE_ENV=test npx jest --runInBand --detectOpenHandles --coverage --forceExit",
     "dev": "nodemon app.js",
     "db-dev": "sequelize-cli --env=test db:drop && sequelize-cli --env=test db:create && sequelize-cli --env=test db:migrate && sequelize-cli --env=test db:seed:all"
   },
@@ -27,11 +28,13 @@
     "express": "^4.17.1",
     "jest": "^27.2.5",
     "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.13",
     "pg": "^8.7.1",
     "sequelize": "^6.6.5",
     "supertest": "^6.1.6"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "sequelize-cli": "^6.2.0"
   }

@@ -1,15 +1,15 @@
 const { User, Interest, UserInterest } = require("../models");
 class InterestController {
-  static async getInterest(req, res, next) {
-    try {
-      const interestUser = await UserInterest.findAll({
-        include: [User, Interest],
-      });
-      res.status(200).json(interestUser);
-    } catch (error) {
-      next(error);
-    }
-  }
+  // static async getInterest(req, res, next) {
+  //   try {
+  //     const interestUser = await UserInterest.findAll({
+  //       include: [User, Interest],
+  //     });
+  //     res.status(200).json(interestUser);
+  //   } catch (error) {
+  //     next(error);
+  //   }
+  // }
 
   static async getInterestLogin(req, res, next) {
     const { id } = req.user;
@@ -23,7 +23,7 @@ class InterestController {
           {
             model: User,
             attributes: {
-              exclude: ["createdAt", "updatedAt"],
+              exclude: ["password", "createdAt", "updatedAt"],
             },
           },
           {
@@ -39,6 +39,7 @@ class InterestController {
       });
       res.status(200).json(interestUser);
     } catch (error) {
+      console.log(error, "====di interest ====")
       next(error);
     }
   }
