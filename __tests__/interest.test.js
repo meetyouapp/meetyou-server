@@ -12,17 +12,25 @@ const userData2 = {
     photo:
       "https://t1.daumcdn.net/news/202003/03/starnews/20200303124859622yvkl.jpg",
     about: "hai cewe",
-    interestId: [1, 3, 7],
+    interestId: [1, 2, 3],
 };
 
 beforeAll((done) => {
-    User.create(userData2)
-        .then((_) => {
-        done();
+    // User.create(userData2)
+    //     .then((_) => {
+    //     done();
+    // })
+    //     .catch((err) => {
+    //     done(err);
+    // });
+    request(app)
+    .post("/register")
+    .send(userData2)
+    .then(resp => {
+        console.log(resp.body)
+        done()
     })
-        .catch((err) => {
-        done(err);
-    });
+    
 });
 
 afterAll((done) => {
@@ -33,7 +41,7 @@ afterAll((done) => {
 
 describe("GET /interest [success case]", () => {
     let access_token = ''
-    let userId = 0
+    let id = 0
     const payloadLogin = {
         email: "testing@mail.com",
         password: "12345678"
@@ -45,7 +53,7 @@ describe("GET /interest [success case]", () => {
             .send(payloadLogin)
             .then(resp => {
                 console.log(resp.body)
-                userId = resp.body.id
+                id = resp.body.id
                 access_token = resp.body.access_token
                 done()
             })
@@ -55,12 +63,11 @@ describe("GET /interest [success case]", () => {
         request(app)
             .get("/interest")
             .set({ access_token })
-            .set({ userId })
+            .set({ id })
             .then(resp => {
-                console.log(resp.body, "=========")
+                console.log('====================',resp.body, "======================")
                 expect(resp.status).toBe(200)
                 expect(resp.body[0]).toHaveProperty('id')
-                expect(resp.body[0].userId).toEqual(userId)
                 expect(resp.body[0]).toHaveProperty('interestId')
                 expect(resp.body[0]).toHaveProperty('User')
                 expect(resp.body[0]).toHaveProperty('Interest')

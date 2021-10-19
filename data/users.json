@@ -2,6 +2,7 @@
   {
     "username": "Chris",
     "email": "chris@mail.com",
+    "password": "123456",
     "age": 38,
     "gender": "male",
     "photo": "https://ik.imagekit.io/xvfgr2ixls8/rs_600x600-171023061437-600.sydney-chris-hemsworth.102317_iD5Yb6Dk0g8.jpg?updatedAt=1634356824828",
