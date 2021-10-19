@@ -39,8 +39,9 @@ class UserController {
   }
   // register
   static async register(req, res, next) {
-    const { username, email, password, age, gender, photo, about, interestId } =
+    const { username, email, password, gender, photo, about, interestId } =
       req.body;
+    const age = +req.body.age;
     const t = await sequelize.transaction();
     try {
       const newUser = await User.create(
@@ -92,7 +93,7 @@ class UserController {
           username: username,
           email: email,
           password: password,
-          age: age,
+          age: +age,
           gender: gender,
           photo: photo,
           about: about,

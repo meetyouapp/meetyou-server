@@ -10,7 +10,7 @@ const { authentication } = require("../middlewares/auth");
 // endpoint profile
 router.post("/login", UserController.login);
 router.post("/register", UserController.register); // lat-long location user
-
+router.get("/interests", InterestController.getAllInterest);
 // router.get("/interest", UserController.getInterest); //get semua interest user yg pake apps
 
 // router.post("/interest"); //gabung sm register
