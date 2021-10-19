@@ -34,5 +34,25 @@
   {
     "userId": 3,
     "interestId": 1
+  },
+  {
+    "userId": 6,
+    "interestId": 8
+  },
+  {
+    "userId": 6,
+    "interestId": 9
+  },
+  {
+    "userId": 6,
+    "interestId": 10
+  },
+  {
+    "userId": 6,
+    "interestId": 4
+  },
+  {
+    "userId": 6,
+    "interestId": 1
   }
 ]

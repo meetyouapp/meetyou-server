@@ -4,6 +4,7 @@ const InterestController = require("../controllers/interestController");
 const SwipeController = require("../controllers/swipeController");
 const UserController = require("../controllers/userController");
 const VideoCallController = require("../controllers/videoCallController");
+const ImageController = require('../controllers/imageController')
 const { errorHandler } = require("../errorHandlers/errorHandler");
 const { authentication } = require("../middlewares/auth");
 
@@ -49,6 +50,8 @@ router.put("/meetup");
 
 router.get("/location");
 router.post("/location");
+
+router.post('/image', ImageController.addImage)
 
 router.use(errorHandler);
 
