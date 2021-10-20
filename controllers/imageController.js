@@ -5,7 +5,7 @@ class ImageController {
     const { id } = req.user
     const { imgUrl } = req.body
     try {
-      const newImage = Image.create({
+      const newImage = await Image.create({
         imgUrl: imgUrl,
         authorId: id
       })

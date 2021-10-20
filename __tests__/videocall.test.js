@@ -40,7 +40,7 @@ describe("POST /videocall [success case]", () => {
     }
 
     const payloadVideoCall = {
-        name: "meetyou"
+        name: "meetyou123"
     }
 
     beforeEach((done) => {

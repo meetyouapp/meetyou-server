@@ -109,6 +109,49 @@ describe("POST /swiperight [success case]", () => {
 
 })
 
+describe("POST /swipeleft [success case]", () => {
+    let access_token = ''
+
+    const payloadLogin = {
+        email: "testing@mail.com",
+        password: "12345678"
+    }
+
+    const payloadSwipeLeft = {
+        targetId: 2
+    }
+
+    beforeEach((done) => {
+        request(app)
+            .post("/login")
+            .send(payloadLogin)
+            .then(resp => {
+                console.log(resp.body)
+                access_token = resp.body.access_token
+                done()
+            })
+    })
+
+    test("swipe left, status 201", (done) => {
+        request(app)
+            .post("/swipeleft")
+            .set({ access_token })
+            .send(payloadSwipeLeft)
+            .then(resp => {
+                console.log(resp.body)
+                console.log(resp.status)
+                expect(resp.status).toBe(201)
+                expect(resp.body).toHaveProperty("id")
+                expect(resp.body).toHaveProperty("authorStatus")
+                expect(resp.body).toHaveProperty("authorId")
+                expect(resp.body).toHaveProperty("targetStatus")
+                expect(resp.body).toHaveProperty("targetId", payloadSwipeLeft.targetId)
+                done()
+            })
+    })
+
+})
+
 describe("GET /users [fail case]", () => {
     let access_token = ''
 
