@@ -111,7 +111,6 @@ class UserController {
       //   .catch((error) => {
       //     throw error;
       //   });
-      console.log('==============', profile, '================')
       res.status(201).json(profile);
     } catch (error) {
       next(error);
@@ -158,7 +157,6 @@ class UserController {
           },
           {
             model: UserInterest,
-<<<<<<< HEAD
             include: {
               model: Interest,
             },
@@ -186,11 +184,6 @@ class UserController {
             },
           }
         ]
-=======
-            include: [Interest],
-          },
-        ],
->>>>>>> b3cfdea149568c206383c7ceca628d5164792316
       });
       res.status(200).json(user);
     } catch (error) {
