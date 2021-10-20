@@ -5,6 +5,7 @@ const SwipeController = require("../controllers/swipeController");
 const UserController = require("../controllers/userController");
 const VideoCallController = require("../controllers/videoCallController");
 const ImageController = require('../controllers/imageController')
+const PlaceController = require("../controllers/placeController");
 const { errorHandler } = require("../errorHandlers/errorHandler");
 const { authentication } = require("../middlewares/auth");
 
@@ -12,13 +13,13 @@ const { authentication } = require("../middlewares/auth");
 router.post("/login", UserController.login);
 router.post("/register", UserController.register); // lat-long location user
 router.get("/interests", InterestController.getAllInterest);
-
 // router.get("/interest", UserController.getInterest); //get semua interest user yg pake apps
 
 // router.post("/interest"); //gabung sm register
 
 // authentication mulai dari sini
 router.use(authentication);
+router.get('/places', PlaceController.getPlace)
 router.get("/interest", InterestController.getInterestLogin); //get semua interest user yg login
 router.patch("/profile/location", UserController.editLocationProfile); // location update
 router.put("/profile", UserController.editProfile); // image ditambahin after login pertama kali
