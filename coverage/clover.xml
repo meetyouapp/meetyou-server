@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1634753326630" clover="3.2.0">
-  <project timestamp="1634753326631" name="All files">
+<coverage generated="1634758113507" clover="3.2.0">
+  <project timestamp="1634758113507" name="All files">
     <metrics statements="306" coveredstatements="284" conditionals="59" coveredconditionals="47" methods="45" coveredmethods="41" elements="410" coveredelements="372" complexity="0" loc="306" ncloc="306" packages="7" files="20" classes="20"/>
     <package name="meetyou-server">
       <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0"/>

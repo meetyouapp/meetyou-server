@@ -31,6 +31,14 @@ class InterestController {
       next(error);
     }
   }
+  static async getAllInterest(req, res, next) {
+    try {
+      const interest = await Interest.findAll();
+      res.status(200).json(interest);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = InterestController;
