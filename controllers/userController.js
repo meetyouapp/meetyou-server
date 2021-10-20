@@ -74,9 +74,7 @@ class UserController {
   }
 
   static async editProfile(req, res, next) {
-    const { username, email, password, age, gender, photo, about, imgUrl } =
-      req.body;
-
+    const { username, email, password, age, gender, photo, about, imgUrl } = req.body;
     const { id } = req.user;
 
     try {
@@ -90,11 +88,8 @@ class UserController {
       const updateProfile = await User.update(
         {
           username: username,
-          email: email,
-          password: password,
           age: age,
           gender: gender,
-          photo: photo,
           about: about,
         },
         { where: { id: findUser.id }, returning: true }
@@ -102,21 +97,21 @@ class UserController {
 
       const profile = updateProfile[1][0];
 
-      const promises = imgUrl.map(async (url) => {
-        await Image.create({
-          imgUrl: url,
-          authorId: profile.id,
-        });
-      });
+      // const promises = imgUrl.map(async (url) => {
+      //   await Image.create({
+      //     imgUrl: url,
+      //     authorId: profile.id,
+      //   });
+      // });
 
-      Promise.all(promises)
-        .then(async (_) => {
-          console.log("berhasil");
-        })
-        .catch((error) => {
-          throw error;
-        });
-
+      // Promise.all(promises)
+      //   .then(async (_) => {
+      //     console.log("berhasil");
+      //   })
+      //   .catch((error) => {
+      //     throw error;
+      //   });
+      console.log('==============', profile, '================')
       res.status(201).json(profile);
     } catch (error) {
       next(error);
