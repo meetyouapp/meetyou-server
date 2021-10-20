@@ -26,14 +26,13 @@ beforeAll((done) => {
     .post("/register")
     .send(userData2)
     .then(resp => {
-        console.log(resp.body)
         done()
     })
     
 });
 
 afterAll((done) => {
-    User.destroy({truncate: true, cascade: true})
+    User.destroy({where: {email: userData2.email}})
         .then(() => done())
         .catch((err) => done(err))
 });
@@ -51,7 +50,6 @@ describe("POST /image [success case]", () => {
             .post("/login")
             .send(payloadLogin)
             .then(resp => {
-                console.log(resp.body)
                 id = resp.body.id
                 access_token = resp.body.access_token
                 done()
@@ -70,7 +68,6 @@ describe("POST /image [success case]", () => {
             .set({ id })
             .send(payloadImage)
             .then(resp => {
-                console.log('====================',resp.body, "======================")
                 expect(resp.status).toBe(201)
                 expect(resp.body).toHaveProperty('id')
                 expect(resp.body).toHaveProperty('imgUrl')
@@ -93,7 +90,6 @@ describe("POST /image [failed case]", () => {
             .post("/login")
             .send(payloadLogin)
             .then(resp => {
-                console.log(resp.body)
                 id = resp.body.id
                 access_token = resp.body.access_token
                 done()
@@ -112,7 +108,6 @@ describe("POST /image [failed case]", () => {
             .set({ id })
             .send(payloadImage)
             .then(resp => {
-                console.log('====================',resp.body, "======================")
                 expect(resp.status).toBe(500)
                 expect(resp.body.errors[0]).toHaveProperty('message')
                 done()

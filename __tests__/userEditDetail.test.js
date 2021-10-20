@@ -27,7 +27,7 @@ beforeAll((done) => {
 });
 
 afterAll((done) => {
-    User.destroy({truncate: true, cascade: true})
+    User.destroy({where: {email: userData2.email}})
         .then(() => done())
         .catch((err) => done(err))
 });

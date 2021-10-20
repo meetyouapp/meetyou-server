@@ -8,7 +8,7 @@ describe("User Routes Test", () => {
     username: "inirani",
     email: "rani@mail.com",
     password: "12345678",
-    age: 17,
+    age: 18,
     gender: "female",
     photo:
       "https://koreanindo.net/wp-content/uploads/2020/11/kim-yoo-jung-4.jpg",
@@ -40,7 +40,7 @@ describe("User Routes Test", () => {
     });
 
     afterAll((done) => {
-      User.destroy({truncate: true, cascade: true})
+      User.destroy({where: {email: userData2.email}})
         .then(() => done())
         .catch((err) => done(err))
     });
@@ -61,7 +61,6 @@ describe("User Routes Test", () => {
           expect(body).toHaveProperty("about", userData.about);
           done();
         })
-        .catch((error) => console.log(error));
     });
 
     test("400 Failed register - should return error if email is null", (done) => {
@@ -79,13 +78,11 @@ describe("User Routes Test", () => {
         })
         .then((response) => {
           const { body, status } = response;
-          console.log(body, "disiniii");
           expect(status).toBe(400);
           expect(body).toHaveProperty("message", ["Email is required"]);
 
           done();
         })
-        .catch((err) => console.log(err, "diisinii"));
     });
 
     test("400 Failed register - should return error if email is empty", (done) => {
@@ -335,23 +332,6 @@ describe("User Routes Test", () => {
   });
 
   describe("POST /login - user authentication process", () => {
-    beforeAll((done) => {
-      User.create(userData)
-        .then((_) => {
-          done();
-        })
-        .catch((err) => {
-          done(err);
-        });
-    });
-
-    afterAll((done) => {
-      queryInterface
-        .bulkDelete("Users", {})
-        .then(() => done())
-        .catch((err) => done(err));
-    });
-
     test("200 Success login - should return access_token", (done) => {
       request(app)
         .post("/login")

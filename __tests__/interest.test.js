@@ -27,14 +27,13 @@ beforeAll((done) => {
     .post("/register")
     .send(userData2)
     .then(resp => {
-        console.log(resp.body)
         done()
     })
     
 });
 
 afterAll((done) => {
-    User.destroy({truncate: true, cascade: true})
+    User.destroy({where: {email: userData2.email}})
         .then(() => done())
         .catch((err) => done(err))
 });
@@ -52,7 +51,6 @@ describe("GET /interest [success case]", () => {
             .post("/login")
             .send(payloadLogin)
             .then(resp => {
-                console.log(resp.body)
                 id = resp.body.id
                 access_token = resp.body.access_token
                 done()
@@ -65,7 +63,6 @@ describe("GET /interest [success case]", () => {
             .set({ access_token })
             .set({ id })
             .then(resp => {
-                console.log('====================',resp.body, "======================")
                 expect(resp.status).toBe(200)
                 expect(resp.body[0]).toHaveProperty('id')
                 expect(resp.body[0]).toHaveProperty('interestId')
@@ -102,7 +99,6 @@ describe("GET /interest [fail case]", () => {
             .get("/interest")
             .set({ access_token })
             .then(resp => {
-                console.log(resp.body)
                 expect(resp.status).toBe(500)
                 expect(resp.body.message).toBe('Internal Server Error')
                 done()
