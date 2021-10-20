@@ -33,5 +33,96 @@
     "latitude": -6.265398453694549, 
     "longitude": 106.78439264211129,
     "url": "https://goo.gl/maps/YpTN2dN3oFLgMRMm7"
+  },
+  {
+    "name": "Surabaya North Quay",
+    "photo": "http://www.imural.id/en/blog/wp-content/uploads/2017/10/Surabaya-North-Quay.jpg",
+    "latitude": -7.196304425089556, 
+    "longitude": 112.73240771329864,
+    "url": "https://goo.gl/maps/uv5eQx9bf7GtGU9X7"
+  },
+  {
+    "name": "Citilites Skyclub & Bistro",
+    "photo": "https://jelajah-indonesia.co.id/wp-content/uploads/2021/01/Citilites-3.jpg",
+    "latitude": -7.291979705865939, 
+    "longitude": 112.71547091365875,
+    "url": "https://goo.gl/maps/x1E9DS3cRCMp2N529"
+  },
+  {
+    "name": "Holywings Kertajaya",
+    "photo": "https://obs.line-scdn.net/0hZqhuxkpCBV5VDBOvYLl6CW9aBjFmYBZdMTpUQAViW2l5NEUKYD5JaHYJWW4taEIAPGpIP3EMHm8taUEMPj9J/w1200",
+    "latitude": -7.276724834030407, 
+    "longitude": 112.78231787620717,
+    "url": "https://goo.gl/maps/KXiQpLNtXLFdSvYC7"
+  },
+  {
+    "name": "Sky 36 Restaurant",
+    "photo": "https://jejakpiknik.com/wp-content/uploads/2020/10/tempat-romantis-di-surabaya-murah-630x380.jpg",
+    "latitude": -7.267416262247055, 
+    "longitude": 112.74904970942345,
+    "url": "https://goo.gl/maps/V7GhWvipqeuQrbnG6"
+  },
+  {
+    "name": "The Socialite Bistro & Lounge",
+    "photo": "https://img.indoclubbing.com/files/Contents/3750/708481533849835732215183379764.jpg",
+    "latitude": -7.290569473773176, 
+    "longitude": 112.73088009646973,
+    "url": "https://goo.gl/maps/TNqT7MTxED9kMCuA9"
+  },
+  {
+    "name": "Zangrandi Ice Cream",
+    "photo": "https://cdn-2.tstatic.net/surabaya/foto/bank/images/cafe-es-krim-zangrandi-salah-satu-yang-akan-terkena-dampak-penutupan-jl-yos-sudarso-surabaya.jpg",
+    "latitude": -7.262092466309184, 
+    "longitude": 112.74614415539398,
+    "url": "https://g.page/zangrandi-ice-cream?share"
+  },
+  {
+    "name": "Tropikal Coffee",
+    "photo": "https://www.citymagz.net/wp-content/uploads/sites/2/2020/01/IMG_7819-1024x683.jpg ",
+    "latitude": -7.278301388962453, 
+    "longitude": 112.80801827795038,
+    "url": "https://g.page/tropikalcoffee?share"
+  },
+  {
+    "name": "Tampan Cafe",
+    "photo": "https://10619-2.s.cdn12.com/rests/original/107_509692625.jpg",
+    "latitude": -7.325248480986803, 
+    "longitude": 112.7909137909267,
+    "url": "https://g.page/tampancafe?share"
+  },
+  {
+    "name": "TBRK Rumah Kopi",
+    "photo": "https://liburanyuk.co.id/wp-content/uploads/2020/10/tbrk-rumah-kopi-653x393.jpg",
+    "latitude": -7.260861688856747, 
+    "longitude": 112.66946662773022,
+    "url": "https://goo.gl/maps/217fcThSxRpLyHRv7"
+  },
+  {
+    "name": "HeHa Sky View",
+    "photo": "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2020/06/20/919461238.jpg",
+    "latitude": -7.849486854643031, 
+    "longitude": 110.47831326764083,
+    "url": "https://g.page/hehaskyview?share"
+  },
+  {
+    "name": "Watu Langit Jogja Coffee and Resto",
+    "photo": "https://jakimen.com/wp-content/uploads/2020/01/watu-langit-coffee-jogja.png",
+    "latitude": -7.7878995114643494, 
+    "longitude": 110.51690137126572,
+    "url": "https://g.page/watulangit?share"
+  },
+  {
+    "name": "Filosofi Kopi Jogja",
+    "photo": "http://mixmedia.co.id/mymagz/wp-content/uploads/sites/8/2017/07/KEDAI-FILOSOFI-KOPI-1.jpg",
+    "latitude": -7.727251666252224, 
+    "longitude": 110.37691328113338,
+    "url": "https://goo.gl/maps/Pb8FE23BZb42RhqV9"
+  },
+  {
+    "name": "Tempo Gelato",
+    "photo": "https://img.okezone.com/content/2021/07/13/301/2440007/fakta-unik-tempo-gelato-yogyakarta-gerai-es-krim-belasteran-jawa-italia-65ULcEEFoB.JPG",
+    "latitude": -7.759891889826598, 
+    "longitude": 110.37915575792755,
+    "url": "https://g.page/tempo-gelato-kaliurang?share"
   }
 ]
