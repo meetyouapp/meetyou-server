@@ -97,7 +97,7 @@ class UserController {
       );
 
       const profile = updateProfile[1][0];
-      res.status(201).json(profile);
+      res.status(200).json(profile);
     } catch (error) {
       next(error);
     }
@@ -126,7 +126,7 @@ class UserController {
 
       const profile = updateProfileLocation[1][0];
 
-      res.status(201).json(profile);
+      res.status(200).json(profile);
     } catch (error) {
       console.log();
       next(error);
