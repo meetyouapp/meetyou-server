@@ -74,7 +74,7 @@ class UserController {
   }
 
   static async editProfile(req, res, next) {
-    const { username, email, password, age, gender, photo, about, imgUrl } = req.body;
+    const { username, email, password, age, gender, photo, about } = req.body;
     const { id } = req.user;
 
     try {
@@ -91,26 +91,12 @@ class UserController {
           age: age,
           gender: gender,
           about: about,
+          photo: photo
         },
         { where: { id: findUser.id }, returning: true }
       );
 
       const profile = updateProfile[1][0];
-
-      // const promises = imgUrl.map(async (url) => {
-      //   await Image.create({
-      //     imgUrl: url,
-      //     authorId: profile.id,
-      //   });
-      // });
-
-      // Promise.all(promises)
-      //   .then(async (_) => {
-      //     console.log("berhasil");
-      //   })
-      //   .catch((error) => {
-      //     throw error;
-      //   });
       res.status(201).json(profile);
     } catch (error) {
       next(error);
@@ -170,9 +156,9 @@ class UserController {
   }
 
   static async getDetailId(req, res, next) {
-    const { id } = req.params;
+    const { id } = req.params
     try {
-      const user = await User.findByPk(id, {
+      const user = await User.findByPk(Number(id), {
         include: [
           {
             model: Image,
@@ -185,7 +171,14 @@ class UserController {
           }
         ]
       });
-      res.status(200).json(user);
+      if (!user || user === null) {
+        throw {
+          name: "NOTFOUND",
+          message: "User Not Found",
+        };
+      } else {
+        res.status(200).json(user);
+      }
     } catch (error) {
       next(error);
     }
