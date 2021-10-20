@@ -106,6 +106,90 @@ describe("GET /profile [success case]", () => {
   })
 
 })
+
+describe("PUT /profile [success case]", () => {
+  let access_token = ''
+
+  const payloadLogin = {
+      email: "testing@mail.com",
+      password: "12345678"
+  }
+  const payloadEdit = {
+    username: 'testers',
+    age: 22,
+    gender: 'male',
+    about: 'edited about',
+    photo: 'photourlhere'
+  }
+
+  beforeEach((done) => {
+      request(app)
+          .post("/login")
+          .send(payloadLogin)
+          .then(resp => {
+              access_token = resp.body.access_token
+              done()
+          })
+  })
+
+  test("get profile detail by id from params, status 200", (done) => {
+      request(app)
+          .put(`/profile`)
+          .set({ access_token })
+          .send(payloadEdit)
+          .then(resp => {
+              expect(resp.status).toBe(200)
+              expect(resp.body).toHaveProperty("id")
+              expect(resp.body).toHaveProperty("username")
+              expect(resp.body).toHaveProperty("email")
+              expect(resp.body).toHaveProperty("about")
+              expect(resp.body).toHaveProperty("photo")
+              done()
+          })
+  })
+
+})
+
+describe("PATCH /profile/location [success case]", () => {
+  let access_token = ''
+
+  const payloadLogin = {
+      email: "testing@mail.com",
+      password: "12345678"
+  }
+  const payloadEdit = {
+    latitude: -6.174054416454043,
+    longitude: 106.82663976097286,
+  }
+
+  beforeEach((done) => {
+      request(app)
+          .post("/login")
+          .send(payloadLogin)
+          .then(resp => {
+              access_token = resp.body.access_token
+              done()
+          })
+  })
+
+  test("get profile detail by id from params, status 200", (done) => {
+      request(app)
+          .patch(`/profile/location`)
+          .set({ access_token })
+          .send(payloadEdit)
+          .then(resp => {
+              expect(resp.status).toBe(200)
+              expect(resp.body).toHaveProperty("id")
+              expect(resp.body).toHaveProperty("username")
+              expect(resp.body).toHaveProperty("email")
+              expect(resp.body).toHaveProperty("about")
+              expect(resp.body).toHaveProperty("photo")
+              done()
+          })
+  })
+
+})
+
 describe("GET /profile/:id [fail case]", () => {
 
   let access_token = ''
@@ -121,7 +205,6 @@ describe("GET /profile/:id [fail case]", () => {
           .send(payloadLogin)
           .then(resp => {
               access_token = resp.body.access_token
-              console.log('>>>>>>>>>>>>', access_token, '<<<<<<<<<<<<')
               done()
           })
   })
@@ -154,7 +237,6 @@ describe("GET /profile [fail case]", () => {
             .get("/profile")
             .set({ access_token: wrongAccessToken })
             .then(resp => {
-                console.log(resp.body)
                 expect(resp.status).toBe(500)
                 expect(resp.body).toHaveProperty("message", "Internal Server Error");
                 done()
