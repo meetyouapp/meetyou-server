@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const DAILY_KEY = process.env.API_DAILY_KEY
+const DAILY_KEY = process.env.API_DAILY_KEY || '76fa684a046829ebd2155f14eb7f974bf45461a9c998f26d199f10574767e0a0'
 
 class VideoCallController {
     static async createRoom (req, res, next) {
