@@ -158,9 +158,39 @@ class UserController {
           },
           {
             model: UserInterest,
+<<<<<<< HEAD
+            include: {
+              model: Interest,
+            },
+          }
+        ]
+      });
+      res.status(200).json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getDetailId(req, res, next) {
+    const { id } = req.params;
+    try {
+      const user = await User.findByPk(id, {
+        include: [
+          {
+            model: Image,
+          },
+          {
+            model: UserInterest,
+            include: {
+              model: Interest,
+            },
+          }
+        ]
+=======
             include: [Interest],
           },
         ],
+>>>>>>> b3cfdea149568c206383c7ceca628d5164792316
       });
       res.status(200).json(user);
     } catch (error) {
