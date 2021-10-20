@@ -46,7 +46,6 @@ describe("GET /users [success case]", () => {
             .post("/login")
             .send(payloadLogin)
             .then(resp => {
-                console.log(resp.body, "==48==")
                 access_token = resp.body.access_token
                 done()
             })
@@ -57,7 +56,6 @@ describe("GET /users [success case]", () => {
             .get("/users")
             .set({ access_token })
             .then(resp => {
-                console.log(resp.body, "===line58===")
                 expect(resp.status).toBe(200)
                 // expect(resp.body).toBe([])
                 expect(Array.isArray(resp.body)).toBe(true);
@@ -83,7 +81,6 @@ describe("POST /swiperight [success case]", () => {
             .post("/login")
             .send(payloadLogin)
             .then(resp => {
-                console.log(resp.body)
                 access_token = resp.body.access_token
                 done()
             })
@@ -95,8 +92,7 @@ describe("POST /swiperight [success case]", () => {
             .set({ access_token })
             .send(payloadSwipeRight)
             .then(resp => {
-                console.log(resp.body)
-                console.log(resp.status)
+                console.log('>>>>>>>>>>>>', resp.body, '<<<<<<<<<<<<<<')
                 expect(resp.status).toBe(201)
                 expect(resp.body).toHaveProperty("id")
                 expect(resp.body).toHaveProperty("authorStatus")
@@ -165,7 +161,6 @@ describe("GET /users [fail case]", () => {
             .post("/login")
             .send(payloadLogin)
             .then(resp => {
-                console.log(resp.body, "==token==")
                 access_token = resp.body.access_token
                 done()
             })
@@ -179,7 +174,6 @@ describe("GET /users [fail case]", () => {
             .get("/users")
             .set({ access_token })
             .then(resp => {
-                console.log(resp.body)
                 expect(resp.status).toBe(500)
                 expect(resp.body.message).toBe('Internal Server Error')
                 done()

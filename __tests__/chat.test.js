@@ -28,7 +28,7 @@ beforeAll((done) => {
 });
 
 afterAll((done) => {
-    User.destroy({truncate: true, cascade: true})
+    User.destroy({where: {email: userData2.email}})
         .then(() => done())
         .catch((err) => done(err))
 });
@@ -46,7 +46,6 @@ describe("GET /chat [success case]", () => {
             .post("/login")
             .send(payloadLogin)
             .then(resp => {
-                console.log(resp.body, "==49==")
                 access_token = resp.body.access_token
                 done()
             })
@@ -63,7 +62,6 @@ describe("GET /chat [success case]", () => {
             .set({ access_token })
             .set(payloadChat)
             .then(resp => {
-                console.log("=========", resp.body, "=========")
                 expect(resp.status).toBe(200)
                 // expect(resp.body).toBe([])
                 expect(Array.isArray(resp.body.chatListAuthor)).toBe(true);
@@ -86,7 +84,6 @@ describe("GET /chat [failed case]", () => {
             .post("/login")
             .send(payloadLogin)
             .then(resp => {
-                console.log(resp.body, "==89==")
                 access_token = resp.body.access_token
                 done()
             })
@@ -106,7 +103,6 @@ describe("GET /chat [failed case]", () => {
             .set({ access_token })
             .send(payloadChat)
             .then(resp => {
-                console.log("=========", resp.body, "=========")
                 expect(resp.status).toBe(500)
                 expect(resp.body.message).toBe('Internal Server Error')
                 done()
