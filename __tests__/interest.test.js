@@ -38,6 +38,19 @@ afterAll((done) => {
         .catch((err) => done(err))
 });
 
+describe("GET ALL /interest [success case]", () => {
+
+    test("get all interest, status 200", (done) => {
+        request(app)
+            .get("/interests")
+            .then(resp => {
+                expect(resp.status).toBe(200)
+                expect(Array.isArray(resp.body)).toBe(true);
+                done()
+            })
+    })
+})
+
 describe("GET /interest [success case]", () => {
     let access_token = ''
     let id = 0
