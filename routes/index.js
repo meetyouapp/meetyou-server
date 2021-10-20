@@ -22,9 +22,10 @@ router.patch("/profile/location", UserController.editLocationProfile); // locati
 router.put("/profile", UserController.editProfile); // image ditambahin after login pertama kali
 
 router.get("/profile", UserController.getProfileId); // untuk detail user
+router.get("/profile/:id", UserController.getDetailId); // untuk detail user yg berada di explore
 
 // endpoint explore
-router.get("/user", SwipeController.showUserList); // list user yang akan ditampilkan diexplore (location), yang match tidak sama dengan false, dan user itu sendiri, interest (optional, styling)
+router.get("/users", SwipeController.showUserList); // list user yang akan ditampilkan diexplore (location), yang match tidak sama dengan false, dan user itu sendiri, interest (optional, styling)
 
 // cek dulu, apakah calon target tersebut sudah like user yang sedang login
 // kalo belum user login sebagai authorId => statusnya true, target status null

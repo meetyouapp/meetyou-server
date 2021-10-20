@@ -154,15 +154,42 @@ class UserController {
   }
 
   static async getProfileId(req, res, next) {
-    const { id } = req.body;
+    const { id } = req.user;
     try {
-      const user = await UserInterest.findByPk(id, {
-        include: {
-          model: UserInterest,
-          include: {
-            model: Interest,
+      const user = await User.findByPk(id, {
+        include: [
+          {
+            model: Image,
           },
-        },
+          {
+            model: UserInterest,
+            include: {
+              model: Interest,
+            },
+          }
+        ]
+      });
+      res.status(200).json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getDetailId(req, res, next) {
+    const { id } = req.params;
+    try {
+      const user = await User.findByPk(id, {
+        include: [
+          {
+            model: Image,
+          },
+          {
+            model: UserInterest,
+            include: {
+              model: Interest,
+            },
+          }
+        ]
       });
       res.status(200).json(user);
     } catch (error) {
