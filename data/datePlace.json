@@ -1,27 +1,37 @@
 [
   {
     "name": "Hard Rock Cafe Jakarta",
+    "photo": "https://ik.imagekit.io/xvfgr2ixls8/1373345241_PR8zofTG-Jx.jpg?updatedAt=1634763559425",
     "latitude": -6.205125009423124, 
-    "longitude": 106.82188466435156
+    "longitude": 106.82188466435156,
+    "url": "https://g.page/hardrockcafejakarta?share"
   },
   {
     "name": "Plataran Dharmawangsa",
+    "photo": "https://ik.imagekit.io/xvfgr2ixls8/images__4__TZ6jkpN0S.jpeg?updatedAt=1634763595572",
     "latitude": -6.254109511043543,  
-    "longitude": 106.80269995560205
+    "longitude": 106.80269995560205,
+    "url": "https://g.page/platarandharmawangsa?share"
   },
   {
     "name": "Blok M Square",
+    "photo": "https://ik.imagekit.io/xvfgr2ixls8/mal-dibuka-5-juni-mendatang-di-antaranya-blok-m-square-dan-mal-ambasador-F3pC37Ta1a_PISOtov9e.jpg?updatedAt=1634763636785",
     "latitude": -6.24438321777839, 
-    "longitude": 106.80071908443843
+    "longitude": 106.80071908443843,
+    "url": "https://goo.gl/maps/AbD3XqyY4u9tdNAMA"
   },
   {
     "name": "Grand Indonesia",
+    "photo": "https://ik.imagekit.io/xvfgr2ixls8/Melanggar-Hak-Cipta-Grand-Indonesia-Dihukum-Membayar-Ganti-Rugi-Sebesar-Rp1-M_VhVAaTzBJtb.jpg?updatedAt=1634763669611",
     "latitude": -6.194977438057295, 
-    "longitude": 106.82037682491041
+    "longitude": 106.82037682491041,
+    "url": "https://goo.gl/maps/pth1XFUYJPsvAQ7j8"
   },
   {
-    "name": "Plataran Dharmawangsa",
-    "latitude": -6.205125009423124, 
-    "longitude": 106.82188466435156
+    "name": "Pondok Indah Mall",
+    "photo": "https://ik.imagekit.io/xvfgr2ixls8/pondok-indah-mal_je5Dzi5WN.jpg?updatedAt=1634763710609",
+    "latitude": -6.265398453694549, 
+    "longitude": 106.78439264211129,
+    "url": "https://goo.gl/maps/YpTN2dN3oFLgMRMm7"
   }
 ]
